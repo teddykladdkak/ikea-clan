@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>IKEA test</title>
+	<link rel="shortcut icon" href="ico/ikea/ikea.ico" />
+	<link rel="icon" type="image/vnd.microsoft.icon" href="ico/ikea/ikea.ico" />
+	<link rel="icon" type="image/png" href="http://eaassets-a.akamaihd.net/battlelog/prod/emblem/100/572/320/2955059909464495572.png?v=1460830749" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+	<style type="text/css">
+		body{
+			background-color: black;
+		}
+		.table{
+			background-color: white;
+			width: 100%;
+			display: table;
+			border-collapse: collapse;
+			font-size: 20px;
+			margin-bottom: 50px;
+		}
+		.tr{
+			display: table-row;
+			border-collapse: collapse;
+		}
+		.td{
+			display: table-cell;
+			border: 2px solid #000;
+			position: relative;
+		}
+		.bfavatar img:first-child{
+			height: 200px;
+		}
+		.bfavatar img:nth-child(2){
+			width: 60px;
+			position: absolute;
+			bottom: 0px;
+			left: 0px;
+		}
+		.bfavatar, .rbsavatar {
+			vertical-align: bottom;
+			text-align: center;
+		}
+		.rbsavatar {
+			white-space: nowrap;
+		}
+		.rbsavatar img{
+			height: 250px;
+		}
+		.rbsavatar img:first-child{
+			margin-right: -30px;
+		}
+		.gameicon{
+			vertical-align: middle;
+		}
+		.gameicon img{
+			width: 100%;
+			max-width: 100px;
+		}
+		.username .td {
+			font-size: 25px;
+		}
+	</style>
+	<script type="text/javascript">
+		var avatars = {
+			"Sledge": "http://static.tvtropes.org/pmwiki/pub/images/sledgefullbody.png",
+			"Thatcher": "http://static.tvtropes.org/pmwiki/pub/images/thatcherfullbody.png",
+			"Smoke": "http://static.tvtropes.org/pmwiki/pub/images/smokefullbody.png",
+			"Mute": "http://static.tvtropes.org/pmwiki/pub/images/mutefullbody.png",
+			"Ash": "http://static.tvtropes.org/pmwiki/pub/images/ashfullbody.png",
+			"Thermite": "http://static.tvtropes.org/pmwiki/pub/images/thermitefullbody.png",
+			"Castle": "http://static.tvtropes.org/pmwiki/pub/images/castlefullbody.png",
+			"Pulse": "http://static.tvtropes.org/pmwiki/pub/images/pulsefullbody.png",
+			"Twitch": "http://static.tvtropes.org/pmwiki/pub/images/twitchfullbodyold.png",
+			"Montagne": "http://static.tvtropes.org/pmwiki/pub/images/montagnefullbody.png",
+			"Doc": "http://static.tvtropes.org/pmwiki/pub/images/docfullbody.png",
+			"Rook": "http://static.tvtropes.org/pmwiki/pub/images/rookfullbody.png",
+			"Glaz": "http://static.tvtropes.org/pmwiki/pub/images/glazfullbody.png",
+			"Fuze": "http://static.tvtropes.org/pmwiki/pub/images/fuzefullbodyold.png",
+			"Kapkan": "http://static.tvtropes.org/pmwiki/pub/images/kapkanfullbodyold.png",
+			"Tachanka": "http://static.tvtropes.org/pmwiki/pub/images/tachankafullbodyold.png",
+			"Blitz": "http://static.tvtropes.org/pmwiki/pub/images/blitzfullbody.png",
+			"Iq": "http://static.tvtropes.org/pmwiki/pub/images/iqfullbody.png",
+			"Jäger": "http://static.tvtropes.org/pmwiki/pub/images/jagerfullbody.png",
+			"Bandit": "http://static.tvtropes.org/pmwiki/pub/images/banditfullbodyold.png",
+			"Buck": "http://static.tvtropes.org/pmwiki/pub/images/buckfullbody.png",
+			"Frost": "http://static.tvtropes.org/pmwiki/pub/images/frostfullbody.png",
+			"Blackbeard": "http://static.tvtropes.org/pmwiki/pub/images/blackbeardfullbody.png",
+			"Valkyrie": "http://static.tvtropes.org/pmwiki/pub/images/valkyriefullbody.png",
+			"Capitão": "http://static.tvtropes.org/pmwiki/pub/images/capitaofullbody.png",
+			"Caveira": "http://static.tvtropes.org/pmwiki/pub/images/caveirafullbody.png",
+			"Hibana": "http://static.tvtropes.org/pmwiki/pub/images/hibanafullbody.png",
+			"Echo": "http://static.tvtropes.org/pmwiki/pub/images/echofullbody.png",
+			"Jackal": "http://static.tvtropes.org/pmwiki/pub/images/r6_velvet_jackal.png",
+			"Mira": "http://static.tvtropes.org/pmwiki/pub/images/r6_velvet_mira.png",
+			"Ying": "http://static.tvtropes.org/pmwiki/pub/images/r6s_ying_0.png",
+			"Lesion": "http://static.tvtropes.org/pmwiki/pub/images/r6s_lesion_7.png",
+			"Zofia": "http://static.tvtropes.org/pmwiki/pub/images/r6s_zofia_0_8.png",
+			"Ela": "http://static.tvtropes.org/pmwiki/pub/images/elafullbody2_4.png",
+			"Dokkaebi": "http://static.tvtropes.org/pmwiki/pub/images/r6s_dokkaebi_3.png",
+			"Vigil": "http://static.tvtropes.org/pmwiki/pub/images/r6s_vigil_0.png"
+		};
+		var medlemmar = [{
+			id: 'nudde',
+			username: {
+				bf: 'Porrhasse',
+				rbs: 'Nudebimbo'
+			},
+			link: {
+				bf: [{
+					namn: 'bf4stats', url: 'http://bf4stats.com/pc/Porrhasse'
+				}, {
+					namn: 'battlelog', url: 'http://battlelog.battlefield.com/bf4/user/Porrhasse/'
+				}],
+				rbs: [{
+					namn: 'r6stats', url: 'https://r6stats.com/stats/uplay/Nudebimbo'
+				}, {
+					namn: 'uplay', url: 'https://game-rainbow6.ubi.com/en-us/uplay/player-statistics/df59a0d5-355c-44aa-bfb7-2139537b1346/multiplayer'
+				}]
+			}
+		}, {
+			id: 'lille',
+			username: {
+				bf: 'Relsnakskir',
+				rbs: ''
+			},
+			link: {
+				bf: [{
+					namn: 'bf4stats', url: 'http://bf4stats.com/pc/Relsnakskir'
+				}, {
+					namn: 'battlelog', url: 'http://battlelog.battlefield.com/bf4/user/Relsnakskir/'
+				}],
+				rbs: []
+			}
+		}, {
+			id: 'dick',
+			username: {
+				bf: 'Dyngkuken',
+				rbs: 'Mr_ReDnEcK'
+			},
+			link: {
+				bf: [{
+					namn: 'bf4stats', url: 'http://bf4stats.com/pc/Dyngkuken'
+				}, {
+					namn: 'battlelog', url: 'http://battlelog.battlefield.com/bf4/user/Dyngkuken/'
+				}],
+				rbs: [{
+					namn: 'r6stats', url: 'https://r6stats.com/stats/uplay/Mr_ReDnEcK'
+				}, {
+					namn: 'uplay', url: 'https://game-rainbow6.ubi.com/en-us/uplay/player-statistics/045fe454-de69-4645-8082-07a434ffcc29/multiplayer'
+				}]
+			}
+		}, {
+			id: 'master',
+			username: {
+				bf: 'teddykladdkaka',
+				rbs: 'TeDDyKlaDDkaka'
+			},
+			link: {
+				bf: [{
+					namn: 'bf4stats', url: 'http://bf4stats.com/pc/teddykladdkaka'
+				}, {
+					namn: 'battlelog', url: 'http://battlelog.battlefield.com/bf4/user/teddykladdkaka/'
+				}],
+				rbs: [{
+					namn: 'r6stats', url: 'https://r6stats.com/stats/uplay/TeDDyKlaDDkaka'
+				}, {
+					namn: 'uplay', url: 'https://game-rainbow6.ubi.com/en-us/uplay/player-statistics/0e2f64c8-4722-4893-ae51-7bcf22fc8124/multiplayer'
+				}]
+			}
+		}];
+		$(document).ready(function() {
+			for (var i = medlemmar.length - 1; i >= 0; i--) {
+				if(!medlemmar[i].username.bf == ''){
+					$('#bf .avatar').append('<div class="td bfavatar ' + medlemmar[i].id + '"></div>');
+					$('#bf .username').append('<div class="td ' + medlemmar[i].id + '">' + medlemmar[i].username.bf + '</div>');
+					$('#bf .rank').append('<div class="td ' + medlemmar[i].id + '"></div>');
+					$('#bf .hplayed').append('<div class="td ' + medlemmar[i].id + '"></div>');
+					$('#bf .rplayed').append('<div class="td ' + medlemmar[i].id + '"></div>');
+					$('#bf .wlr').append('<div class="td ' + medlemmar[i].id + '"></div>');
+					$('#bf .kdr').append('<div class="td ' + medlemmar[i].id + '"></div>');
+					$('#bf .acc').append('<div class="td ' + medlemmar[i].id + '"></div>');
+					$('#bf .lhead').append('<div class="td ' + medlemmar[i].id + '"></div>');
+					$('#bf .update').append('<div class="td ' + medlemmar[i].id + '"></div>');
+					var links = '';
+					for (var a = medlemmar[i].link.bf.length - 1; a >= 0; a--) {
+						var links = links + '<a href="' + medlemmar[i].link.bf[a].url + '" alt="' + medlemmar[i].link.bf[a].namn + '" target="_blank">' + medlemmar[i].link.bf[a].namn + '</a><br/>';
+					};
+					$('#bf .other').append('<div class="td ' + medlemmar[i].id + '">' + links + '</div>');
+					bfstats(medlemmar[i].username.bf);
+				};
+				if(!medlemmar[i].username.rbs == ''){
+					$('#rbs .avatar').append('<div class="td rbsavatar ' + medlemmar[i].id + '"></div>');
+					$('#rbs .username').append('<div class="td ' + medlemmar[i].id + '">' + medlemmar[i].username.rbs + '</div>');
+					$('#rbs .lvl').append('<div class="td ' + medlemmar[i].id + '"></div>');
+					$('#rbs .hplayed').append('<div class="td ' + medlemmar[i].id + '"></div>');
+					$('#rbs .rplayed').append('<div class="td ' + medlemmar[i].id + '"></div>');
+					$('#rbs .wlr').append('<div class="td ' + medlemmar[i].id + '"></div>');
+					$('#rbs .kdr').append('<div class="td ' + medlemmar[i].id + '"></div>');
+					$('#rbs .hshot').append('<div class="td ' + medlemmar[i].id + '"></div>');
+					$('#rbs .penetr').append('<div class="td ' + medlemmar[i].id + '"></div>');
+					$('#rbs .km').append('<div class="td ' + medlemmar[i].id + '"></div>');
+					$('#rbs .update').append('<div class="td ' + medlemmar[i].id + '"></div>');
+					var links = '';
+					for (var a = medlemmar[i].link.rbs.length - 1; a >= 0; a--) {
+						var links = links + '<a href="' + medlemmar[i].link.rbs[a].url + '" alt="' + medlemmar[i].link.rbs[a].namn + '" target="_blank">' + medlemmar[i].link.rbs[a].namn + '</a><br/>';
+					};
+					$('#rbs .other').append('<div class="td ' + medlemmar[i].id + '">' + links + '</div>');
+					rbsstats(medlemmar[i].username.rbs);
+				};
+			};
+		});
+		function rbsstats(name){
+			$.get("https://api.r6stats.com/api/v1/players/" + name + "/operators/?platform=uplay").done(function( data ) {
+				var def = 0;
+				var defimg = '';
+				var defname = '';
+				var atk = 0;
+				var atkimg = '';
+				var atkname = '';
+				for (var i = data.operator_records.length - 1; i >= 0; i--) {
+					if(data.operator_records[i].operator.role == 'atk'){
+						if(data.operator_records[i].stats.played >= atk){
+							atk = data.operator_records[i].stats.played;
+							atkimg = avatars[data.operator_records[i].operator.name];
+							atkname = data.operator_records[i].operator.name;
+						};
+					}else if(data.operator_records[i].operator.role == 'def'){
+						if(data.operator_records[i].stats.played >= def){
+							def = data.operator_records[i].stats.played;
+							defimg = avatars[data.operator_records[i].operator.name];
+							defname = data.operator_records[i].operator.name;
+						};
+					}else{
+						console.log('Kunde inte hitta ifall avatar är attack eller defend.');
+					};
+				};
+				var id = getid(name);
+				$('#rbs .avatar .' + id).append('<img src="' + atkimg + '" title="' + atkname + '"/><img src="' + defimg + '" title="' + defname + '"/>');
+			});
+			$.get("https://api.r6stats.com/api/v1/players/" + name + "/?platform=uplay", function( data ) {
+				var id = getid(data.player.username);
+				$('#rbs .lvl .' + id).append(data.player.stats.progression.level);
+				$('#rbs .hplayed .' + id).append(Math.floor((data.player.stats.casual.playtime /60) /60));
+				$('#rbs .rplayed .' + id).append(data.player.stats.casual.wins + data.player.stats.casual.losses);
+				$('#rbs .wlr .' + id).append(data.player.stats.casual.wlr);
+				$('#rbs .kdr .' + id).append(data.player.stats.casual.kd);
+				$('#rbs .hshot .' + id).append(data.player.stats.overall.headshots);
+				$('#rbs .penetr .' + id).append(data.player.stats.overall.penetration_kills);
+				$('#rbs .km .' + id).append(Math.floor((data.player.stats.overall.steps_moved * 1.3 ) / 1000));
+				$('#rbs .update .' + id).append(prittydate(data.player.updated_at));
+			});
+		};
+		function bfstats(name){
+			$.get("http://api.bf4stats.com/api/playerInfo?plat=pc&name=" + name + "&output=json", function( data ) {
+				var score = [data.stats.kits.assault.score, data.stats.kits.engineer.score, data.stats.kits.support.score, data.stats.kits.recon.score];
+				var scorename = ['assault', 'engineer', 'support', 'recon'];
+				var highestvalue = 0;var chosenkit = '';
+				for (var i = score.length - 1; i >= 0; i--) {
+					if(score[i] > highestvalue){
+						var highestvalue = score[i];
+						var chosenkit = scorename[i];
+					};
+				};
+				var kdrate = Math.floor((parseInt(data.stats.kills) / parseInt(data.stats.deaths)) * 100) / 100;
+				var wlrate = Math.floor((parseInt(data.stats.numWins) / parseInt(data.stats.numLosses)) * 100) / 100;
+				var hitrate = Math.floor((parseInt(data.stats.shotsHit) / parseInt(data.stats.shotsFired)) * 1000) / 10;
+				var timeplayed = Math.floor((data.player.timePlayed / 60) / 60);
+				var date = prittydate(data.player.dateUpdate);
+				var id = getid(data.player.name);
+				$('#bf .avatar .' + id).append('<img src="http://bf4central.com/wp-content/uploads/2013/04/battlefield-4-' + chosenkit + '-class-render.jpg" title="' + chosenkit + '"/><img src="http://eaassets-a.akamaihd.net/bl-cdn/cdnprefix/production-253-adf-b/public/profile/warsaw/gamedata/rank/mediumns/' + data.player.rank.img + '.png" title="' + data.player.rank.nr + '">');
+				$('#bf .rank .' + id).append(data.player.rank.name).attr('data-rank', data.player.rank.nr);
+				$('#bf .hplayed .' + id).append(timeplayed);
+				$('#bf .rplayed .' + id).append(data.stats.extra.roundsFinished);
+				$('#bf .wlr .' + id).append(wlrate);
+				$('#bf .kdr .' + id).append(kdrate);
+				$('#bf .acc .' + id).append(hitrate);
+				$('#bf .lhead .' + id).append(data.stats.longestHeadshot);
+				$('#bf .update .' + id).append(date);
+			});
+		};
+		function getid(name){for (var i = medlemmar.length - 1; i >= 0; i--) {if(medlemmar[i].username.bf.toLowerCase() == name.toLowerCase() || medlemmar[i].username.rbs.toLowerCase() == name.toLowerCase()){return medlemmar[i].id;};};return false;};
+		function addZero(num) {if(num >= 9){return num;}else{return '0' + num;};};
+		function prittydate(datestring){var date = new Date(datestring);var d = addZero(date.getDate());var m = addZero(parseInt(date.getMonth())+ 1);var y = date.getFullYear();return y + '-' + m + '-' + d;};
+		function uppdate(){for (var i = medlemmar.length - 1; i >= 0; i--) {window.open("http://bf4stats.com/pc/" + medlemmar[i].username.bf);};};
+		function checkstats(){
+			var $rankelem = $('#bf .rank .td');
+				var ranknum = 0;
+				for (var i = $rankelem.length - 1; i >= 0; i--) {
+					if(i == 0){}else{
+						if(parseInt($rankelem[i].getAttribute('data-rank')) >= ranknum){
+							var winninrank = i;
+							ranknum = parseInt($rankelem[i].getAttribute('data-rank'));
+						};
+					};
+				};
+				$rankelem[winninrank].setAttribute('style', 'font-weight: bold;');
+			var bftocheck = ['hplayed', 'rplayed', 'wlr', 'kdr', 'acc', 'lhead'];
+			for (var i = bftocheck.length - 1; i >= 0; i--) {
+					var $numbers = $('#bf .' + bftocheck[i] + ' .td');
+					var bestval = 0;
+					for (var a = $numbers.length - 1; a >= 0; a--) {
+						if(a == 0){}else{
+							var andratvarde = parseInt($numbers[a].innerText * 10000);
+							if(andratvarde >= bestval){
+								var winningnum = a;
+								bestval = andratvarde;
+							};
+						};
+					};
+					$numbers[winningnum].setAttribute('style', 'font-weight: bold;');
+			};
+			var rbstocheck = ['lvl', 'hplayed', 'rplayed', 'wlr', 'kdr', 'hshot', 'penetr', 'km'];
+			for (var i = rbstocheck.length - 1; i >= 0; i--) {
+				var $numbers = $('#rbs .' + rbstocheck[i] + ' .td');
+				var bestval = 0;
+				for (var a = $numbers.length - 1; a >= 0; a--) {
+					if(a == 0){}else{
+						var andratvarde = parseInt($numbers[a].innerText * 10000);
+						if(andratvarde >= bestval){
+							var winningnum = a;
+							bestval = andratvarde;
+						};
+					};
+				};
+				$numbers[winningnum].setAttribute('style', 'font-weight: bold;');
+			};
+		};
+	</script>
+</head>
+<body>
+	<div style="text-align:center">
+		<a href="http://battlelog.battlefield.com/bf4/platoons/view/4781260953777374539/" target="_blank">
+			<img src="http://eaassets-a.akamaihd.net/battlelog/prod/emblem/100/572/320/2955059909464495572.png?v=1460830749">
+		</a>
+	</div>
+	<div class="table" id="bf">
+		<div class="tr avatar">
+			<div class="td gameicon"><img src="https://i.redd.it/q6tjuya7mkhz.png"></div>
+		</div>
+		<div class="tr username">
+			<div class="td">Name</div>
+		</div>
+		<div class="tr rank">
+			<div class="td">Rank</div>
+		</div>
+		<div class="tr hplayed">
+			<div class="td">Hours Played</div>
+		</div>
+		<div class="tr rplayed">
+			<div class="td">Rounds Played</div>
+		</div>
+		<div class="tr wlr">
+			<div class="td">W/L Ratio</div>
+		</div>
+		<div class="tr kdr">
+			<div class="td">K/D Rate</div>
+		</div>
+		<div class="tr acc">
+			<div class="td">Accuracy</div>
+		</div>
+		<div class="tr lhead">
+			<div class="td">Longest Headshot</div>
+		</div>
+		<div class="tr update">
+			<div class="td">Last update</div>
+		</div>
+		<div class="tr other">
+			<div class="td">Other Sites</div>
+		</div>
+	</div>
+
+	<div class="table" id="rbs">
+		<div class="tr avatar">
+			<div class="td gameicon"><img src="https://www.notebookcheck.net/fileadmin/Notebooks/Sonstiges/Games/Rainbow_Six_Siege/logo1.jpg"></div>
+		</div>
+		<div class="tr username">
+			<div class="td">Name</div>
+		</div>
+		<div class="tr lvl">
+			<div class="td">Level</div>
+		</div>
+		<div class="tr hplayed">
+			<div class="td">Hours Played</div>
+		</div>
+		<div class="tr rplayed">
+			<div class="td">Rounds Played</div>
+		</div>
+		<div class="tr wlr">
+			<div class="td">W/L Ratio</div>
+		</div>
+		<div class="tr kdr">
+			<div class="td">K/D Rate</div>
+		</div>
+		<div class="tr hshot">
+			<div class="td">Headshots</div>
+		</div>
+		<div class="tr penetr">
+			<div class="td">Penetration Kills</div>
+		</div>
+		<div class="tr km">
+			<div class="td">Walked Km</div>
+		</div>
+		<div class="tr update">
+			<div class="td">Last update</div>
+		</div>
+		<div class="tr other">
+			<div class="td">Other Sites</div>
+		</div>
+	</div>
+	<input type="button" value="Uppdatera BF stats" onclick="uppdate();">
+	<input type="button" value="Jämför stats" onclick="checkstats();">
+</body>
+</html>
