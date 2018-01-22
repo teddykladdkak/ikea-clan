@@ -83,6 +83,27 @@
 			color: #E87600;
 			text-decoration: overline underline;
 		}
+		.rbsavatar{
+
+		}
+		.levelbadge{
+			position: absolute;
+			bottom: 0px;
+			left: 0px;
+			background-color: white;
+			background-image: url('img/rbs/level.png');
+			background-repeat: no-repeat;
+			background-position: center center;
+			background-size: 60px 60px;
+			width: 60px;
+			height: 60px;
+			display: inline-block;
+			font-size: 25px;
+			font-weight: bold;
+			font-family: verdana;
+			border-radius: 20px;
+			padding-top: 5px;
+		}
 	</style>
 	<script type="text/javascript">
 		var avatars = {
@@ -215,7 +236,7 @@
 				if(!medlemmar[i].username.rbs == ''){
 					$('#rbs .avatar').append('<div class="td rbsavatar ' + medlemmar[i].id + '"></div>');
 					$('#rbs .username').append('<div class="td ' + medlemmar[i].id + '">' + medlemmar[i].username.rbs + '</div>');
-					$('#rbs .lvl').append('<div class="td ' + medlemmar[i].id + '"></div>');
+					//$('#rbs .lvl').append('<div class="td ' + medlemmar[i].id + '"></div>');
 					$('#rbs .hplayed').append('<div class="td ' + medlemmar[i].id + '"></div>');
 					$('#rbs .rplayed').append('<div class="td ' + medlemmar[i].id + '"></div>');
 					$('#rbs .wlr').append('<div class="td ' + medlemmar[i].id + '"></div>');
@@ -263,6 +284,7 @@
 			});
 			$.get("https://api.r6stats.com/api/v1/players/" + name + "/?platform=uplay", function( data ) {
 				var id = getid(data.player.username);
+				$('#rbs .avatar .' + id).append('<span class="levelbadge">' + data.player.stats.progression.level + '</span>');
 				$('#rbs .lvl .' + id).append(data.player.stats.progression.level);
 				$('#rbs .hplayed .' + id).append(Math.floor((data.player.stats.casual.playtime /60) /60));
 				$('#rbs .rplayed .' + id).append(data.player.stats.casual.wins + data.player.stats.casual.losses);
@@ -416,9 +438,9 @@
 		<div class="tr username">
 			<div class="td">Name</div>
 		</div>
-		<div class="tr lvl">
+		<!--<div class="tr lvl">
 			<div class="td">Level</div>
-		</div>
+		</div>-->
 		<div class="tr hplayed">
 			<div class="td">Hours Played</div>
 		</div>
