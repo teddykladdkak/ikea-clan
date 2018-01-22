@@ -10,7 +10,7 @@ http.createServer(function (request, response) {
    try {
      var requestUrl = url.parse(request.url)
      // need to use path.normalize so people can't access directories underneath baseDirectory
-    if(requestUrl.pathname == '/'){var filelink = '/index.html';++startcount;console.log(startcount + ' st har använt sidan!');}else{var filelink = requestUrl.pathname;};
+    if(requestUrl.pathname == '/'){var filelink = '/index.html';++startcount;}else{var filelink = requestUrl.pathname;};
     var fsPath = baseDirectory+path.normalize(filelink)
 
 
