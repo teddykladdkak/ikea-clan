@@ -291,7 +291,7 @@
 				var timeplayed = Math.floor((data.player.timePlayed / 60) / 60);
 				var date = prittydate(data.player.dateUpdate);
 				var id = getid(data.player.name);
-				$('#bf .avatar .' + id).append('<img src="http://bf4central.com/wp-content/uploads/2013/04/battlefield-4-' + chosenkit + '-class-render.jpg" title="' + chosenkit + '"/><img src="http://eaassets-a.akamaihd.net/bl-cdn/cdnprefix/production-253-adf-b/public/profile/warsaw/gamedata/rank/mediumns/' + data.player.rank.img + '.png" title="' + data.player.rank.nr + '">');
+				$('#bf .avatar .' + id).append('<img src="bf/class/' + chosenkit + '.jpg" title="' + chosenkit + '"/><img src="http://eaassets-a.akamaihd.net/bl-cdn/cdnprefix/production-253-adf-b/public/profile/warsaw/gamedata/rank/mediumns/' + data.player.rank.img + '.png" title="' + data.player.rank.nr + '">');
 				$('#bf .rank .' + id).append(data.player.rank.name).attr('data-rank', data.player.rank.nr);
 				$('#bf .hplayed .' + id).append(timeplayed);
 				$('#bf .rplayed .' + id).append(data.stats.extra.roundsFinished);
