@@ -291,7 +291,7 @@
 				var timeplayed = Math.floor((data.player.timePlayed / 60) / 60);
 				var date = prittydate(data.player.dateUpdate);
 				var id = getid(data.player.name);
-				$('#bf .avatar .' + id).append('<img src="bf/class/' + chosenkit + '.jpg" title="' + chosenkit + '"/><img src="http://eaassets-a.akamaihd.net/bl-cdn/cdnprefix/production-253-adf-b/public/profile/warsaw/gamedata/rank/mediumns/' + data.player.rank.img + '.png" title="' + data.player.rank.nr + '">');
+				$('#bf .avatar .' + id).append('<img src="img/bf/class/' + chosenkit + '.jpg" title="' + chosenkit + '"/><img src="https://eaassets-a.akamaihd.net/bl-cdn/cdnprefix/production-253-adf-b/public/profile/warsaw/gamedata/rank/mediumns/' + data.player.rank.img + '.png" title="' + data.player.rank.nr + '">');
 				$('#bf .rank .' + id).append(data.player.rank.name).attr('data-rank', data.player.rank.nr);
 				$('#bf .hplayed .' + id).append(timeplayed);
 				$('#bf .rplayed .' + id).append(data.stats.extra.roundsFinished);
@@ -355,21 +355,21 @@
 	<div class="table head">
 		<div class="tr">
 			<div class="td havatar">
-				<img src="visningsbilder/teddy.png">
+				<img src="img/visningsbilder/teddy.png">
 			</div>
 			<div class="td havatar">
-				<img src="visningsbilder/traktor.png">
+				<img src="img/visningsbilder/traktor.png">
 			</div>
 			<div class="td">
 				<a href="http://battlelog.battlefield.com/bf4/platoons/view/4781260953777374539/" target="_blank">
-					<img src="http://eaassets-a.akamaihd.net/battlelog/prod/emblem/100/572/320/2955059909464495572.png?v=1460830749">
+					<img src="https://eaassets-a.akamaihd.net/battlelog/prod/emblem/100/572/320/2955059909464495572.png?v=1460830749">
 				</a>
 			</div>
 			<div class="td havatar">
-				<img src="visningsbilder/dick.png">
+				<img src="img/visningsbilder/dick.png">
 			</div>
 			<div class="td havatar">
-				<img src="visningsbilder/nude.png">
+				<img src="img/visningsbilder/nude.png">
 			</div>
 		</div>
 	</div>
