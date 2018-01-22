@@ -57,7 +57,7 @@
 		.rbsavatar img{
 			height: 250px;
 		}
-		.rbsavatar img:first-child{
+		.rbsavatar .leftavatar{
 			margin-right: -30px;
 		}
 		.gameicon{
@@ -280,7 +280,7 @@
 					};
 				};
 				var id = getid(name);
-				$('#rbs .avatar .' + id).append('<img src="' + atkimg + '" title="' + atkname + '"/><img src="' + defimg + '" title="' + defname + '"/>');
+				$('#rbs .avatar .' + id).append('<img src="' + atkimg + '" class="leftavatar" title="' + atkname + '"/><img src="' + defimg + '" title="' + defname + '"/>');
 			});
 			$.get("https://api.r6stats.com/api/v1/players/" + name + "/?platform=uplay", function( data ) {
 				var id = getid(data.player.username);
