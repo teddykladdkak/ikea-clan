@@ -325,7 +325,7 @@
 			});
 		};
 		function getid(name){for (var i = medlemmar.length - 1; i >= 0; i--) {if(medlemmar[i].username.bf.toLowerCase() == name.toLowerCase() || medlemmar[i].username.rbs.toLowerCase() == name.toLowerCase()){return medlemmar[i].id;};};return false;};
-		function addZero(num) {if(num >= 9){return num;}else{return '0' + num;};};
+		function addZero(num) {if(num >= 10){return num;}else{return '0' + num;};};
 		function prittydate(datestring){var date = new Date(datestring);var d = addZero(date.getDate());var m = addZero(parseInt(date.getMonth())+ 1);var y = date.getFullYear();return y + '-' + m + '-' + d;};
 		function uppdate(){for (var i = medlemmar.length - 1; i >= 0; i--) {window.open("http://bf4stats.com/pc/" + medlemmar[i].username.bf);};};
 		function checkstats(){
